@@ -1,6 +1,9 @@
-h1 User information
+extend ../../layouts/index.pug
 
-h4 Name: #{user.name}
-h4 Age: #{user.age}
+block content
+  h1 User information
 
-a(href="/users") « Back to home
+  h4 Name: #{user.name}
+  h4 Age: #{user.age}
+
+  a(href="/users") « Back to home

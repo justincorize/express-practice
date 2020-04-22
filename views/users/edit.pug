@@ -1,0 +1,9 @@
+extend ../../layouts/index.pug
+
+block content
+  h1 Edit user #{user.name}
+
+  form(action=`/users/${user.id}/edit` method="POST")
+    input(type="text" name="name" placeholder="Username" value=user.name)
+    input(type="text" name="age" placeholder="Age" value=user.age)
+    button(type="submit") Edit

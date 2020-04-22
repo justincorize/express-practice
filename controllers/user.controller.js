@@ -29,3 +29,21 @@ exports.postCreate = (req, res) => {
   db.get('users').push({ id: shortid.generate(), name, age }).write()
   res.redirect('/users')
 }
+
+exports.edit = (req, res) => {
+  const { id } = req.params
+  const user = db.get('users').find({ id }).value()
+  res.render('users/edit', { user })
+}
+
+exports.postEdit = (req, res) => {
+  const { id } = req.params
+  db.get('users').find({ id }).assign(req.body).write()
+  res.redirect('/users')
+}
+
+exports.delete = (req, res) => {
+  const { id } = req.params
+  db.get('users').remove({ id }).write()
+  res.redirect('/users')
+}

@@ -1,18 +1,19 @@
-h1 Users list
+extend ../../layouts/index.pug
 
-h4 Menu
-ul
-  li
-    a(href="/users/create") Create user  
-  li
-    a(href="/books") Book store
+block content
+  h1 Users list
 
-h4 Search
-form(action="/users/search", method="GET")
-  input(type="text" name="name" placeholder="Search user by name" value=searchValue)
-  button(type="submit") Search
+  h4 Search
+  form(action="/users/search", method="GET")
+    input(type="text" name="name" placeholder="Search user by name" value=searchValue)
+    button(type="submit") Search
 
-ul
-  each user in users
-    li= user.name
-      a(href='/users/' + user.id) View
+  ul
+    each user in users
+      li
+        .card
+          .card-header= user.name
+          .card-body
+            a(href='/users/' + user.id) View &nbsp;
+            a(href='/users/' + user.id + '/edit') Edit &nbsp;
+            a(href='/users/' + user.id + '/delete') Delete &nbsp;
